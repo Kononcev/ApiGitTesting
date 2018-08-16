@@ -43,6 +43,11 @@
             <artifactId>rest-assured</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
 
 </project>

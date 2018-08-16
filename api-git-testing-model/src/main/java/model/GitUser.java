@@ -4,102 +4,25 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.net.URL;
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class GitUser {
-   private String login;
-   private Integer id;
-   @JsonProperty("avatar_url")
-   private String avatarUrl;
-   private String url;
-   @JsonProperty("html_url")
-   private URL htmlUrl;
-   @JsonProperty("followers_url")
-   private String followers;
-   @JsonProperty("following_url")
-   private String followings;
-   @JsonProperty("public_repos")
-   private String repositories;
+public class GitUser extends GitBasicUser{
    @JsonProperty("created_at")
    private String creatingDate;
+   @JsonProperty("updated_at")
+   private String updatingDate;
+   @JsonProperty("followers")
+   private Integer followersCount;
+   @JsonProperty("following")
+   private Integer followingCount;
 
-   public GitUser() {
-   }
-
-   public GitUser(String login, Integer id, String avatarUrl, String url, URL htmlUrl, String followers, String followings, String repositories, String creatingDate) {
-      this.login = login;
-      this.id = id;
-      this.avatarUrl = avatarUrl;
-      this.url = url;
-      this.htmlUrl = htmlUrl;
-      this.followers = followers;
-      this.followings = followings;
-      this.repositories = repositories;
+   public GitUser(String login, Integer id, String avatarUrl, String url, URL htmlUrl, String repositories, String userType, String creatingDate, String updatingDate, Integer followersCount, Integer followingCount) {
+      super(login, id, avatarUrl, url, htmlUrl, repositories, userType);
       this.creatingDate = creatingDate;
-   }
-
-   public String getLogin() {
-      return login;
-   }
-
-   public void setLogin(String login) {
-      this.login = login;
-   }
-
-   public Integer getId() {
-      return id;
-   }
-
-   public void setId(Integer id) {
-      this.id = id;
-   }
-
-   public String getAvatarUrl() {
-      return avatarUrl;
-   }
-
-   public void setAvatarUrl(String avatarUrl) {
-      this.avatarUrl = avatarUrl;
-   }
-
-   public String getUrl() {
-      return url;
-   }
-
-   public void setUrl(String url) {
-      this.url = url;
-   }
-
-   public URL getHtmlUrl() {
-      return htmlUrl;
-   }
-
-   public void setHtmlUrl(URL htmlUrl) {
-      this.htmlUrl = htmlUrl;
-   }
-
-   public String getFollowers() {
-      return followers;
-   }
-
-   public void setFollowers(String followers) {
-      this.followers = followers;
-   }
-
-   public String getFollowings() {
-      return followings;
-   }
-
-   public void setFollowings(String followings) {
-      this.followings = followings;
-   }
-
-   public String getRepositories() {
-      return repositories;
-   }
-
-   public void setRepositories(String repositories) {
-      this.repositories = repositories;
+      this.updatingDate = updatingDate;
+      this.followersCount = followersCount;
+      this.followingCount = followingCount;
    }
 
    public String getCreatingDate() {
@@ -110,18 +33,44 @@ public class GitUser {
       this.creatingDate = creatingDate;
    }
 
+   public String getUpdatingDate() {
+      return updatingDate;
+   }
+
+   public void setUpdatingDate(String updatingDate) {
+      this.updatingDate = updatingDate;
+   }
+
+   public Integer getFollowersCount() {
+      return followersCount;
+   }
+
+   public void setFollowersCount(Integer followersCount) {
+      this.followersCount = followersCount;
+   }
+
+   public Integer getFollowingCount() {
+      return followingCount;
+   }
+
+   public void setFollowingCount(Integer followingCount) {
+      this.followingCount = followingCount;
+   }
+
    @Override
    public String toString() {
       return "GitUser{" +
-            "login='" + login + '\'' +
-            ", id=" + id +
-            ", avatarUrl='" + avatarUrl + '\'' +
-            ", url='" + url + '\'' +
-            ", htmlUrl='" + htmlUrl + '\'' +
-            ", followers='" + followers + '\'' +
-            ", followings='" + followings + '\'' +
-            ", repositories='" + repositories + '\'' +
-            ", creatingDate='" + creatingDate + '\'' +
+            "login='" + super.getLogin() + '\'' +
+            ", id=" + super.getId() +
+            ", avatarUrl='" + super.getAvatarUrl() + '\'' +
+            ", url='" + super.getUrl() + '\'' +
+            ", htmlUrl=" + super.getHtmlUrl() +
+            ", repositories='" + super.getRepositories() + '\'' +
+            ", userType='" + super.getUserType() + '\'' +
+            "creatingDate='" + creatingDate + '\'' +
+            ", updatingDate='" + updatingDate + '\'' +
+            ", followersCount=" + followersCount +
+            ", followingCount=" + followingCount +
             '}';
    }
 }

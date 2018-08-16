@@ -1,10 +1,11 @@
 package client;
 
-import request.GitHomeRequest;
+import io.restassured.response.Response;
+import request.GitRequest;
 import response.GitResponse;
 
 public interface HttpMethods {
-   GitResponse get(GitHomeRequest webRequest);
+   Response get(GitRequest webRequest);
 
    /*GitResponse post(GitHomeRequest webRequest);
 

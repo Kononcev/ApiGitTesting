@@ -11,5 +11,11 @@
 
     <artifactId>api-git-tesitng-model</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.epam</groupId>
+            <artifactId>ApiGitTestingCore</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
