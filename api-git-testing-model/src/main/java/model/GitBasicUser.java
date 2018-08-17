@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.net.URL;
-import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GitBasicUser {
@@ -14,7 +13,7 @@ public class GitBasicUser {
    private String avatarUrl;
    private String url;
    @JsonProperty("html_url")
-   private URL htmlUrl;
+   private String htmlUrl;
    /*@JsonProperty("followers_url")
    private List<GitFollowers> followers;
    @JsonProperty("following_url")
@@ -27,7 +26,7 @@ public class GitBasicUser {
    public GitBasicUser() {
    }
 
-   public GitBasicUser(String login, Integer id, String avatarUrl, String url, URL htmlUrl, String repositories, String userType) {
+   public GitBasicUser(String login, Integer id, String avatarUrl, String url, String htmlUrl, String repositories, String userType) {
       this.login = login;
       this.id = id;
       this.avatarUrl = avatarUrl;
@@ -69,11 +68,11 @@ public class GitBasicUser {
       this.url = url;
    }
 
-   public URL getHtmlUrl() {
+   public String getHtmlUrl() {
       return htmlUrl;
    }
 
-   public void setHtmlUrl(URL htmlUrl) {
+   public void setHtmlUrl(String htmlUrl) {
       this.htmlUrl = htmlUrl;
    }
 

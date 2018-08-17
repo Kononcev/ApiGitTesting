@@ -17,7 +17,11 @@ public class GitUser extends GitBasicUser{
    @JsonProperty("following")
    private Integer followingCount;
 
-   public GitUser(String login, Integer id, String avatarUrl, String url, URL htmlUrl, String repositories, String userType, String creatingDate, String updatingDate, Integer followersCount, Integer followingCount) {
+   public GitUser(){
+      
+   }
+
+   public GitUser(String login, Integer id, String avatarUrl, String url, String htmlUrl, String repositories, String userType, String creatingDate, String updatingDate, Integer followersCount, Integer followingCount) {
       super(login, id, avatarUrl, url, htmlUrl, repositories, userType);
       this.creatingDate = creatingDate;
       this.updatingDate = updatingDate;
