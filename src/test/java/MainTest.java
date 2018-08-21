@@ -4,18 +4,20 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
+import model.GitRepositories;
 import model.GitUser;
 import org.testng.annotations.Test;
 import response.GitResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 public class MainTest {
    @Test
    public void testUserGitResponse() throws IOException {
-      RequestSpecification request = RestAssured.given();
+      /*RequestSpecification request = RestAssured.given();
       request.baseUri("https://api.github.com/");
-      request.accept(ContentType.JSON);
+      request.accept(ContentType.JSON);*/
 
      // RequestSpecification authenticationSpecification = request.baseUri("https://api.github.com/users/Kononcev").auth().basic("Kononcev", "Vv7891525");
       //JsonPath response = authenticationSpecification.get().jsonPath();
@@ -24,9 +26,9 @@ public class MainTest {
       ResponseBody body = response.getBody();
       System.out.println();
       body.print()*/;
-      Response followers = request.get("user/followers");
+      /*Response followers = request.get("user/followers");
       ResponseBody followersBody = followers.getBody();
-      followersBody.print();
+      followersBody.print();*/
 
       /*Response repos = request.get("/repos/Kononcev/pattern");
       ResponseBody reposBody = repos.getBody();
@@ -36,7 +38,10 @@ public class MainTest {
       Response mainResponse = request.get("users/Kononcev");
       ResponseBody body2 = mainResponse.getBody();
       body2.print();*/
-
+      GitBasicClient basicUser = new GitBasicClient();
+      GitResponse<List<GitRepositories>> response = basicUser.getUserRepositories();
+      List<GitRepositories> repos = response.getModel();
+      repos.forEach(System.out::println);
 
    }
 
