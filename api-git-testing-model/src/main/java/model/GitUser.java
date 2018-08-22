@@ -1,13 +1,8 @@
 package model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.net.URL;
-import java.util.List;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class GitUser extends GitBasicUser{
+public class GitUser extends GitBasicUser {
    @JsonProperty("created_at")
    private String creatingDate;
    @JsonProperty("updated_at")
@@ -17,8 +12,8 @@ public class GitUser extends GitBasicUser{
    @JsonProperty("following")
    private Integer followingCount;
 
-   public GitUser(){
-      
+   public GitUser() {
+
    }
 
    public GitUser(String login, Integer id, String avatarUrl, String url, String htmlUrl, String repositories, String userType, String creatingDate, String updatingDate, Integer followersCount, Integer followingCount) {
@@ -59,22 +54,5 @@ public class GitUser extends GitBasicUser{
 
    public void setFollowingCount(Integer followingCount) {
       this.followingCount = followingCount;
-   }
-
-   @Override
-   public String toString() {
-      return "GitUser{" +
-            "login='" + super.getLogin() + '\'' +
-            ", id=" + super.getId() +
-            ", avatarUrl='" + super.getAvatarUrl() + '\'' +
-            ", url='" + super.getUrl() + '\'' +
-            ", htmlUrl=" + super.getHtmlUrl() +
-            ", repositories='" + super.getRepositories() + '\'' +
-            ", userType='" + super.getUserType() + '\'' +
-            "creatingDate='" + creatingDate + '\'' +
-            ", updatingDate='" + updatingDate + '\'' +
-            ", followersCount=" + followersCount +
-            ", followingCount=" + followingCount +
-            '}';
    }
 }

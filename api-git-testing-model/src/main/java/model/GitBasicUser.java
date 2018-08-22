@@ -3,10 +3,8 @@ package model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.net.URL;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class GitBasicUser {
+public class GitBasicUser extends GitObject{
    private String login;
    private Integer id;
    @JsonProperty("avatar_url")
@@ -90,16 +88,5 @@ public class GitBasicUser {
 
    public void setUserType(String userType) {
       this.userType = userType;
-   }
-
-   @Override
-   public String toString() {
-      return "login='" + login + '\'' +
-            ", id=" + id +
-            ", avatarUrl='" + avatarUrl + '\'' +
-            ", url='" + url + '\'' +
-            ", htmlUrl=" + htmlUrl +
-            ", repositories='" + repositories + '\'' +
-            ", userType='" + userType + '\'';
    }
 }

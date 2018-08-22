@@ -16,6 +16,11 @@
             <groupId>com.epam</groupId>
             <artifactId>ApiGitTestingCore</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
 
 </project>

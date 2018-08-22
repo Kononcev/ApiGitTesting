@@ -1,15 +1,11 @@
-import client.GitBasicClient;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
-import io.restassured.specification.RequestSpecification;
-import model.GitRepositories;
+import client.GitUserClient;
+import model.GitRepository;
 import model.GitUser;
 import org.testng.annotations.Test;
 import response.GitResponse;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainTest {
@@ -19,13 +15,14 @@ public class MainTest {
       request.baseUri("https://api.github.com/");
       request.accept(ContentType.JSON);*/
 
-     // RequestSpecification authenticationSpecification = request.baseUri("https://api.github.com/users/Kononcev").auth().basic("Kononcev", "Vv7891525");
+      // RequestSpecification authenticationSpecification = request.baseUri("https://api.github.com/users/Kononcev").auth().basic("Kononcev", "Vv7891525");
       //JsonPath response = authenticationSpecification.get().jsonPath();
 
       /*Response response = request.get("?access_token=a9639ccbffbbd6e58200aad8c9ec7f497fafe7a2");
       ResponseBody body = response.getBody();
       System.out.println();
-      body.print()*/;
+      body.print()*/
+      ;
       /*Response followers = request.get("user/followers");
       ResponseBody followersBody = followers.getBody();
       followersBody.print();*/
@@ -38,17 +35,22 @@ public class MainTest {
       Response mainResponse = request.get("users/Kononcev");
       ResponseBody body2 = mainResponse.getBody();
       body2.print();*/
-      GitBasicClient basicUser = new GitBasicClient();
-      GitResponse<List<GitRepositories>> response = basicUser.getUserRepositories();
-      List<GitRepositories> repos = response.getModel();
-      repos.forEach(System.out::println);
 
+      getUser();
    }
 
-   public void getUser(){
-      GitBasicClient basicUser = new GitBasicClient();
+   public void getUser() {
+      GitUserClient basicUser = new GitUserClient();
       GitResponse<GitUser> response = basicUser.getBasicUser();
       GitUser user = response.getModel();
       System.out.println(user);
+      System.out.println(user.getHtmlUrl());
+   }
+
+   public void getRepos() {
+      GitUserClient basicUser = new GitUserClient();
+      GitResponse<GitRepository[]> response = basicUser.getUserRepositories();
+      List<GitRepository> repositories = Arrays.asList(response.getModel());
+      repositories.forEach(repos-> System.out.println(repos.getFullName()));
    }
 }

@@ -1,11 +1,12 @@
 package response;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
-import utils.CustomUtils;
 
 import java.io.IOException;
+import java.util.List;
 
 public class GitResponse<T> {
    private Class<?> modelType;
@@ -35,7 +36,7 @@ public class GitResponse<T> {
       ObjectMapper mapper = new ObjectMapper();
       Object obj = null;
       try {
-         obj = mapper.readValue(response.getBody().prettyPrint(), modelType);
+         obj = mapper.readValue(response.asString(), modelType);
       } catch (IOException e) {
          e.printStackTrace();
       }

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class GitRepositories {
+public class GitRepository extends GitObject{
    private String id;
    private String name;
    @JsonProperty("full_name")
@@ -18,7 +18,7 @@ public class GitRepositories {
    @JsonProperty("default_branch")
    private String defaultBranch;
 
-   public GitRepositories() {
+   public GitRepository() {
    }
 
    public String getId() {
@@ -83,19 +83,5 @@ public class GitRepositories {
 
    public void setDefaultBranch(String defaultBranch) {
       this.defaultBranch = defaultBranch;
-   }
-
-   @Override
-   public String toString() {
-      return "GitRepositories{" +
-            "id='" + id + '\'' +
-            ", name='" + name + '\'' +
-            ", fullName='" + fullName + '\'' +
-            ", owner=" + owner +
-            ", htmlURL='" + htmlURL + '\'' +
-            ", size='" + size + '\'' +
-            ", gitURL='" + gitURL + '\'' +
-            ", defaultBranch='" + defaultBranch + '\'' +
-            '}';
    }
 }
