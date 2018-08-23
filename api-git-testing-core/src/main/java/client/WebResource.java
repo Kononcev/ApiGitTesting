@@ -11,7 +11,7 @@ public class WebResource {
    private RequestSpecification baseClient;
 
    public WebResource() {
-      baseClient = RestAssured.given();
+      baseClient = RestAssured.given().auth().oauth2("95908bb00da0511925e0a89bdaff533e4539f5c5");
       baseClient.baseUri(BASE_API);
       baseClient.accept(contentType);
    }
