@@ -21,6 +21,17 @@ public class GitRepository extends GitObject{
    public GitRepository() {
    }
 
+   public GitRepository(String id, String name, String fullName, GitBasicUser owner, String htmlURL, String size, String gitURL, String defaultBranch) {
+      this.id = id;
+      this.name = name;
+      this.fullName = fullName;
+      this.owner = owner;
+      this.htmlURL = htmlURL;
+      this.size = size;
+      this.gitURL = gitURL;
+      this.defaultBranch = defaultBranch;
+   }
+
    public String getId() {
       return id;
    }

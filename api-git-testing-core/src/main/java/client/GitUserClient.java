@@ -16,4 +16,9 @@ public class GitUserClient extends HttpMethodsImpl {
       GitRequest request = WebResource.createWebRequest("users/Kononcev/repos");
       return new GitResponse<>(get(request), GitRepository[].class);
    }
+
+   public GitResponse<String> getRequestLimit(){
+      GitRequest request = WebResource.createWebRequest("rate_limit");
+      return new GitResponse<>(get(request));
+   }
 }
