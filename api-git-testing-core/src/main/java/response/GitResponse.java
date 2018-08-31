@@ -35,6 +35,10 @@ public class GitResponse<T> {
       return response;
    }
 
+   public String getResponseModel(){
+      return response.prettyPrint();
+   }
+
    public void setResponse(Response response) {
       this.response = response;
    }

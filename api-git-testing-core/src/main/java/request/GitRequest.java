@@ -1,20 +1,17 @@
 package request;
 
-import client.WebResource;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.util.Map;
 
 public class GitRequest {
    private String path;
    private String requestBody;
-   private WebResource resource;
+   private Map<String, Object> headers;
 
-   public GitRequest() {
-   }
-
-   public GitRequest(String path, WebResource resource) {
-      this.resource = resource;
-      this.path = this.resource.getBaseApiUrl() + path;
+   public GitRequest(String path) {
+      this.path = path;
    }
 
    public String getPath() {
@@ -29,6 +26,11 @@ public class GitRequest {
       return withRequestBody(modelToString(requestBody));
    }
 
+   public GitRequest withHeaders(Map<String, Object> headers){
+      this.headers = headers;
+      return this;
+   }
+
    private GitRequest withRequestBody(String requestBody) {
       this.requestBody = requestBody;
       return this;
@@ -38,7 +40,7 @@ public class GitRequest {
       ObjectMapper mapper = new ObjectMapper();
       String request = null;
       try {
-         request =  mapper.writerWithDefaultPrettyPrinter().writeValueAsString(requestBody);
+         request = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(requestBody);
       } catch (JsonProcessingException e) {
          e.printStackTrace();
       }

@@ -12,29 +12,26 @@ import java.util.List;
 public class MainTest {
    @Test
    public void testUserGitResponse() {
-      /*GitRepository user = createNewRepository();
-      System.out.println(user);*/
-      System.out.println(getUser());
-   }
+      GitResponse repository = createNewRepository();
+      repository.getResponseModel();
+}
 
-   public GitUser getUser() {
+   public GitResponse getUser() {
       GitUserClient basicUser = new GitUserClient();
       GitResponse<GitUser> response = basicUser.getBasicUser();
-      return response.getModel();
+      return response;
    }
 
-   public GitRepository createNewRepository(){
+   public GitResponse createNewRepository(){
       GitUserClient basicUser = new GitUserClient();
       GitResponse<GitRepository> response = basicUser.createNewRepository(new Repository("TestRepo", "creating from api request", false));
-      return response.getModel();
+      return response;
    }
 
-   public void getRepos() {
+   public GitResponse getRepos() {
       GitUserClient basicUser = new GitUserClient();
       GitResponse<GitRepository[]> response = basicUser.getUserRepositories();
-      List<GitRepository> repositories = Arrays.asList(response.getModel());
-      repositories.forEach(System.out::println);
-      repositories.forEach(repos -> System.out.println(repos.getFullName()));
+      return response;
    }
 
    public void getFollowers() {

@@ -6,13 +6,19 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import request.GitRequest;
 
+import java.util.Map;
+
 public class WebResource {
    private String BASE_API = "https://api.github.com/";
    private ContentType contentType = ContentType.JSON;
    private RequestSpecification baseClient;
 
    public WebResource() {
-      baseClient = RestAssured.given().auth().oauth2("40f2c7a6a3d7b4f315941ed997c1c4319b572189").baseUri(BASE_API).accept("application/json").contentType("application/json");
+      baseClient = RestAssured.given().auth()
+            .oauth2("9657205f15bb756e9e287810fa25a5e061369a7c")
+            .baseUri(BASE_API)
+            .accept("application/json")
+            .contentType("application/json");
    }
 
    public RequestSpecification getGitClient() {
@@ -20,7 +26,7 @@ public class WebResource {
    }
 
    public GitRequest createWebRequest(String url) {
-      return new GitRequest(url, new WebResource());
+      return new GitRequest(getBaseApiUrl()+url);
    }
 
    public String getBaseApiUrl() {
