@@ -27,6 +27,10 @@ public class GitResponse<T> {
       this.response = response;
    }
 
+   public int getStatusCode(){
+      return response.getStatusCode();
+   }
+
    public Response getResponse() {
       return response;
    }

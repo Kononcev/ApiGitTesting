@@ -14,10 +14,10 @@ public class GitBasicUser extends GitObject{
    private String url;
    @JsonProperty("html_url")
    private String htmlUrl;
-   /*@JsonProperty("followers_url")
-   private List<GitFollowers> followers;
+   @JsonProperty("followers_url")
+   private String followers;
    @JsonProperty("following_url")
-   private List<GitFollowers> followings;*/
+   private String followings;
    @JsonProperty("repos_url")
    private String repositories;
    @JsonProperty("type")

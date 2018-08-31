@@ -2,6 +2,7 @@ package client;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import request.GitRequest;
 
@@ -11,20 +12,26 @@ public class WebResource {
    private RequestSpecification baseClient;
 
    public WebResource() {
-      baseClient = RestAssured.given().auth().oauth2("8c36558ec573f8859396886d3ddf40fc3a1619f1");
-      baseClient.baseUri(BASE_API);
-      baseClient.accept(contentType);
+      baseClient = RestAssured.given().auth().oauth2("40f2c7a6a3d7b4f315941ed997c1c4319b572189").baseUri(BASE_API).accept("application/json").contentType("application/json");
    }
 
    public RequestSpecification getGitClient() {
       return baseClient;
    }
 
-   public static GitRequest createWebRequest(String url) {
+   public GitRequest createWebRequest(String url) {
       return new GitRequest(url, new WebResource());
    }
 
    public String getBaseApiUrl() {
       return BASE_API;
+   }
+
+   public Response get(GitRequest request){
+      return baseClient.get(request.getPath());
+   }
+
+   public Response post(GitRequest request){
+      return baseClient.post(request.getPath());
    }
 }

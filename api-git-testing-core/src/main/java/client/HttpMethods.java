@@ -7,9 +7,9 @@ import response.GitResponse;
 public interface HttpMethods {
    Response get(GitRequest webRequest);
 
-   /*GitResponse post(GitHomeRequest webRequest);
+   Response post(GitRequest webRequest);
 
-   GitResponse put(GitHomeRequest webRequest);
+   /*GitResponse put(GitHomeRequest webRequest);
 
    GitResponse delete(GitHomeRequest webRequest);*/
 }
