@@ -40,10 +40,7 @@ public class GitUserClient extends HttpMethodsImpl {
 
    public GitResponse<GitRepository> createNewRepository(Repository repository) {
       Map<String, Object> headers = new HashMap<>();
-      headers.put("Content-Type", ContentType.JSON);
-      headers.put("Accept", "application/json");
-      headers.put("Authorization", "9657205f15bb756e9e287810fa25a5e061369a7c");
-      GitRequest request = webResource.createWebRequest("user/repos").withRequestBody(repository).withHeaders(headers);
+      GitRequest request = webResource.createWebRequest("user/repos").withRequestBody(repository);
       return new GitResponse<>(post(request), GitRepository.class);
    }
 }

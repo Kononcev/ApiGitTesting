@@ -40,7 +40,7 @@ public class GitRequest {
       ObjectMapper mapper = new ObjectMapper();
       String request = null;
       try {
-         request = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(requestBody);
+         request = mapper.writeValueAsString(requestBody);
       } catch (JsonProcessingException e) {
          e.printStackTrace();
       }
