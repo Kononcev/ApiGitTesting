@@ -9,7 +9,7 @@ public interface HttpMethods {
 
    Response post(GitRequest webRequest);
 
-   /*GitResponse put(GitHomeRequest webRequest);
+   //GitResponse put(GitHomeRequest webRequest);
 
-   GitResponse delete(GitHomeRequest webRequest);*/
+   void delete(GitRequest webRequest);
 }
