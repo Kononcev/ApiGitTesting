@@ -13,7 +13,7 @@ public class WebResource {
 
    public WebResource() {
       baseClient = RestAssured.given().auth()
-            .oauth2("b1ffa78a2b84168bc1a2058c5a4548a146381acf")
+            .oauth2("ec110d8b0e37de0b9a4c69d0f096327ba4c8ebf7")
             .baseUri(BASE_API)
             .accept("application/json")
             .contentType("application/json");

@@ -1,46 +1,29 @@
 import client.GitUserClient;
-import model.GitFollowers;
 import model.GitRepository;
-import model.GitUser;
 import model.Repository;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import response.GitResponse;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class MainTest {
+   private String repositoryName = "TestRepo";
+   private String repositoryDescription = "creating from api request";
+   private boolean isRepositoryPrivate = false;
+
    @Test
-   public void testUserGitResponse() {
+   public void testCreateNewRepository() {
       GitUserClient basicUser = new GitUserClient();
-      basicUser.createNewRepository(new Repository("TestRepo", "creating from api request", false));
+      List<GitRepository> repositories = Arrays.asList(basicUser.getUserRepositories().getModel());
 
-      basicUser.deleteRepository("TestRepo");
-
-
-   }
-
-   public GitResponse getUser() {
-      GitUserClient basicUser = new GitUserClient();
-      GitResponse<GitUser> response = basicUser.getBasicUser();
-      return response;
-   }
-
-   public GitResponse createNewRepository() {
-      GitUserClient basicUser = new GitUserClient();
-      return basicUser.createNewRepository(new Repository("TestRepo", "creating from api request", false));
-   }
-
-   public GitResponse getRepos() {
-      GitUserClient basicUser = new GitUserClient();
-      GitResponse<GitRepository[]> response = basicUser.getUserRepositories();
-      return response;
-   }
-
-   public void getFollowers() {
-      GitUserClient basicUser = new GitUserClient();
-      GitResponse<GitFollowers[]> response = basicUser.getUserFollowers();
-      List<GitFollowers> followers = Arrays.asList(response.getModel());
-      followers.forEach(System.out::println);
+      if (repositories.stream().anyMatch(it -> it.getName().equals(repositoryName)))
+         basicUser.deleteRepository(repositoryName);
+      basicUser.createNewRepository(new Repository(repositoryName, repositoryDescription, isRepositoryPrivate));
+      repositories = Arrays.asList(basicUser.getUserRepositories().getModel());
+      Assert.assertTrue(repositories.stream().anyMatch(it -> it.getName().equals(repositoryName)), String.format("repositories should contain repository with %s name", repositoryName));
+      basicUser.deleteRepository(repositoryName);
+      repositories = Arrays.asList(basicUser.getUserRepositories().getModel());
+      Assert.assertFalse(repositories.stream().anyMatch(it -> it.getName().equals(repositoryName)), String.format("repositories shouldn't contain repository with %s name", repositoryName));
    }
 }
