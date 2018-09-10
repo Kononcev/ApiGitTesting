@@ -36,7 +36,7 @@ public class GitUserClient extends HttpMethodsImpl {
       return new GitResponse<>(post(webResource.createWebRequest("user/repos").withRequestBody(repository)), GitRepository.class);
    }
 
-   public void deleteRepository(String repositoryName){
-      delete(webResource.createWebRequest("repos/Kononcev/"+repositoryName));
+   public void deleteRepository(String repositoryName) {
+      new GitResponse<>(delete(webResource.createWebRequest("repos/Kononcev/" + repositoryName)));
    }
 }

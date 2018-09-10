@@ -1,10 +1,8 @@
 package client;
 
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.json.simple.JSONObject;
 import request.GitRequest;
 
 public class WebResource {
@@ -13,7 +11,7 @@ public class WebResource {
 
    public WebResource() {
       baseClient = RestAssured.given().auth()
-            .oauth2("ec110d8b0e37de0b9a4c69d0f096327ba4c8ebf7")
+            .oauth2("ed6cb0f1495f801f802739d9170b4121e9b467ae")
             .baseUri(BASE_API)
             .accept("application/json")
             .contentType("application/json");
@@ -40,11 +38,11 @@ public class WebResource {
       return baseClient.post(request.getPath());
    }
 
-   public void delete(GitRequest request) {
-      baseClient.delete(request.getPath());
+   public Response delete(GitRequest request) {
+      return baseClient.delete(request.getPath());
    }
 
-   public WebResource withRequestBody(GitRequest request){
+   public WebResource withRequestBody(GitRequest request) {
       baseClient.body(request.getRequestBody());
       return this;
    }

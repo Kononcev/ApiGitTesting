@@ -11,5 +11,5 @@ public interface HttpMethods {
 
    //GitResponse put(GitHomeRequest webRequest);
 
-   void delete(GitRequest webRequest);
+   Response delete(GitRequest webRequest);
 }

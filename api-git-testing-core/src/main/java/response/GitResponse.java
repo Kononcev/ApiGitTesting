@@ -1,6 +1,5 @@
 package response;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -9,7 +8,6 @@ import io.restassured.response.ResponseBody;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 public class GitResponse<T> {
    private Class<?> modelType;
@@ -27,7 +25,7 @@ public class GitResponse<T> {
       this.response = response;
    }
 
-   public int getStatusCode(){
+   public int getStatusCode() {
       return response.getStatusCode();
    }
 
@@ -35,7 +33,7 @@ public class GitResponse<T> {
       return response;
    }
 
-   public String getResponseModel(){
+   public String getResponseModel() {
       return response.prettyPrint();
    }
 
